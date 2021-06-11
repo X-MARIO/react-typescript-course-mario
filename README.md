@@ -2,7 +2,7 @@
 
 ## Проект расположен по ссылке
 
-
+https://react-typescript-course-mario.vercel.app/users
 
 ## Заливал на vercel.com. Команда для залива: CI=false && react-scripts build
 
