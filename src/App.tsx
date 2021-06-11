@@ -1,14 +1,27 @@
 import React from 'react';
-import {Card} from "./components";
-import {CardVariant} from "./components/Card";
+import {BrowserRouter, Route, Redirect, Switch, NavLink} from 'react-router-dom';
+
+import {EventsExample} from "./components";
+
+import {TodoItemPage, TodosPage, UserItemPage, UsersPage} from './pages';
 
 const App: React.FC = (): React.ReactElement => {
     return (
-        <div>
-            <Card width='200px' height='200px' variant={CardVariant.primary}>
-                <button>Кнопка</button>
-            </Card>
-        </div>
+        <BrowserRouter>
+            <div>
+                <NavLink to={'/'}>Главная</NavLink>
+                <NavLink to={'/users'}>Пользователи</NavLink>
+                <NavLink to={'/todos'}>Список дел</NavLink>
+            </div>
+            <Switch>
+                <Route path={'/'} component={EventsExample} exact/>
+                <Route path={'/users'} component={UsersPage} exact/>
+                <Route path={'/todos'} component={TodosPage} exact/>
+                <Route path={'/users/:id'} component={UserItemPage}/>
+                <Route path={'/todos/:id'} component={TodoItemPage}/>
+                <Redirect to={'/'}/>
+            </Switch>
+        </BrowserRouter>
     );
 };
 
